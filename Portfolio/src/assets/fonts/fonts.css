@@ -1,0 +1,45 @@
+/* ===== Abril Fatface — display / headings ===== */
+@font-face {
+  font-family: 'Abril Fatface';
+  src: url('./AbrilFatface/AbrilFatface-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== Abhaya Libre — body / UI text ===== */
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('./AbhayaLibre/AbhayaLibre-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('./AbhayaLibre/AbhayaLibre-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('./AbhayaLibre/AbhayaLibre-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('./AbhayaLibre/AbhayaLibre-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('./AbhayaLibre/AbhayaLibre-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,34 @@
+/* ===================================================================
+   Vishal Portfolio — Color Tokens
+   Import this once (e.g. from index.css) so every section shares the
+   same palette. Two groups:
+     1. Core palette  — base theme (dark + warm)
+     2. Neon palette  — vibrant accents for animations / glow effects
+   =================================================================== */
+
+:root {
+  /* ---------- Core palette (theme) ---------- */
+  --color-bg: #202c39;        /* Jet Black  — page background        */
+  --color-surface: #283845;   /* Jet Black  — cards / surfaces       */
+  --color-muted: #b8b08d;     /* Khaki Beige — body / secondary text */
+  --color-highlight: #f2d492; /* Soft Peach — headings / highlights  */
+  --color-accent: #f29559;    /* Tangerine  — buttons / links / CTA  */
+
+  /* ---------- Neon palette (animations / glow) ---------- */
+  --neon-cherry-rose: #b7094c;
+  --neon-dark-raspberry: #a01a58;
+  --neon-royal-plum: #892b64;
+  --neon-velvet-purple: #723c70;
+  --neon-dusty-grape: #5c4d7d;
+  --neon-dusk-blue: #455e89;
+  --neon-rich-cerulean: #2e6f95;
+  --neon-cerulean: #1780a1;
+  --neon-pacific-cyan: #0091ad;
+
+  /* Ready-made gradient across the neon run */
+  --neon-gradient: linear-gradient(
+    90deg,
+    #b7094c, #a01a58, #892b64, #723c70, #5c4d7d,
+    #455e89, #2e6f95, #1780a1, #0091ad
+  );
+}
