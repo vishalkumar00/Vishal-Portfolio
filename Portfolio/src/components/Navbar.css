@@ -47,23 +47,79 @@
 
 /* ===== Links ===== */
 .nav__links {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: clamp(2px, 1vw, 6px);
+  gap: 0; /* items butt together so the line reads as continuous */
 }
 
+/* ===== Sliding line + tab =====
+   One continuous accent line across the menu. A square tab steps up
+   over the active item and glides to whichever item you select. */
+.nav__rail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0; /* zero-height origin: y = 0 is the line */
+  z-index: 0;
+  opacity: 0.7; /* softer line so the orb stands out */
+  pointer-events: none;
+}
+
+.nav__line {
+  position: absolute;
+  top: 0;
+  height: 2px;
+  background: #2a2a2a;
+}
+.nav__line--left { left: 0; }
+.nav__line--right { right: 0; }
+
+/* the raised cap: ┌──┐, square 90° corners, open bottom */
+.nav__tab {
+  position: absolute;
+  bottom: 0; /* rests on the line */
+  height: 22px;
+  border: 2px solid #2a2a2a;
+  border-bottom: none;
+}
+
+/* travelling orb overlay — baseY (24) maps to the line, so shift up by 24 */
+.nav__orb {
+  position: absolute;
+  left: 0;
+  top: -24px;
+  z-index: 2;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* glide only after the first measurement (no slide-in on load) */
+.nav__rail.is-ready .nav__line,
+.nav__rail.is-ready .nav__tab {
+  transition: left 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ===== Items ===== */
 .nav__item {
   position: relative;
-  padding: 8px 16px;
-  border-radius: 11px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px 8px;
   font-family: 'Abhaya Libre', Georgia, serif;
   font-size: 0.9rem;
+  line-height: 1; /* keep content compact so it fits inside the tab */
   letter-spacing: 0.5px;
   color: var(--color-muted);
   text-decoration: none;
   background: transparent;
-  transition: color 0.25s ease, background 0.25s ease,
-    box-shadow 0.25s ease, transform 0.2s ease;
+  /* transform glides in sync with the sliding tab */
+  transition: color 0.25s ease, text-shadow 0.25s ease,
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav__brand:hover,
@@ -75,50 +131,66 @@
 .nav__item:hover,
 .nav__item:focus-visible {
   color: var(--color-highlight);
-  transform: translateY(-4px);
+  text-shadow: 0 0 12px rgba(242, 149, 89, 0.5);
   outline: none;
 }
 
-/* current page: just a top line the width of the item — no fill, no sides */
+/* active item rises up into the tab, centered ~3px below the top line */
 .nav__item.is-active {
-  z-index: 1;
   color: var(--color-highlight);
-  background: transparent;
-  border-radius: 0;
-  border-top: 2px solid var(--color-accent);
-  box-shadow: none;
-  transform: translateY(-11px);
+  transform: translateY(-28px);
+}
+
+/* ===== Icons ===== */
+.nav__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+.nav__icon svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
 }
 
 /* ===== Responsive ===== */
 @media (max-width: 640px) {
   .nav {
-    padding: 12px 10px;
+    padding: 16px 10px; /* room for the tab to rise */
   }
   .nav__brand {
     font-size: 1.15rem;
   }
   .nav__item {
-    padding: 7px 9px;
+    padding: 9px 9px 8px;
     font-size: 0.78rem;
     letter-spacing: 0;
+  }
+  /* icons-only on small screens to stay compact */
+  .nav__label {
+    display: none;
+  }
+  .nav__icon svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
 @media (max-width: 440px) {
-  .nav__links {
-    gap: 0;
-  }
   .nav__item {
-    padding: 6px 6px;
-    font-size: 0.7rem;
+    padding: 8px 7px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .nav__bar { animation: none; }
+  .nav__rail.is-ready .nav__line,
+  .nav__rail.is-ready .nav__tab { transition: none; }
   .nav__item,
   .nav__brand { transition: none; }
-  .nav__item:hover,
   .nav__brand:hover { transform: none; }
 }
