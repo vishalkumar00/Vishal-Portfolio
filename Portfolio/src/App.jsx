@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import SplashScreen from './components/SplashScreen'
 import HomeBackground from './components/HomeBackground'
+import Navbar from './components/Navbar'
 import { setThemeColor, THEME } from './utils/themeColor'
 import './App.css'
 
@@ -20,9 +21,10 @@ function App() {
       <main className={`app${loading ? ' app--hidden' : ' app--reveal'}`}>
         <HomeBackground />
         <div className="home-bg-vignette" />
+        <Navbar />
 
         {/* Main portfolio index page */}
-        <section className="hero-placeholder">
+        <section id="home" className="hero-placeholder">
           <h1>Vishal Kumar</h1>
           <p>Full Stack Developer</p>
         </section>

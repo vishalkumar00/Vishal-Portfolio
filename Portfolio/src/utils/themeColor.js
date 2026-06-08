@@ -29,6 +29,6 @@ export function setThemeColor(hex) {
 /* Named palette anchors so callers don't sprinkle hex codes around */
 export const THEME = {
   splash: '#000000',
-  bg: '#202c39', // --color-bg
+  bg: '#000000', // home page background (black)
   surface: '#283845', // --color-surface
 }
