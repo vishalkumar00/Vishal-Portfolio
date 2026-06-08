@@ -1,0 +1,35 @@
+/* =========================================================
+   Splash / loading screen
+   3D neon plexus mesh converges from all 4 sides, then reveals page
+   ========================================================= */
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background: #000;
+  transition: opacity 1s ease, transform 1s ease, filter 1s ease;
+}
+
+/* exit: zoom into the mesh and fade to reveal the page beneath */
+.splash--exit {
+  opacity: 0;
+  transform: scale(1.6);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.splash__canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash--exit {
+    transition: opacity 0.4s ease;
+    transform: none;
+    filter: none;
+  }
+}
