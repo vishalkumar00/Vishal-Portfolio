@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import SplashScreen from './components/SplashScreen'
+import HomeBackground from './components/HomeBackground'
 import { setThemeColor, THEME } from './utils/themeColor'
 import './App.css'
 
@@ -17,6 +18,9 @@ function App() {
       {loading && <SplashScreen onFinish={() => setLoading(false)} />}
 
       <main className={`app${loading ? ' app--hidden' : ' app--reveal'}`}>
+        <HomeBackground />
+        <div className="home-bg-vignette" />
+
         {/* Main portfolio index page */}
         <section className="hero-placeholder">
           <h1>Vishal Kumar</h1>

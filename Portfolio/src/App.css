@@ -24,6 +24,8 @@
 
 /* temporary hero placeholder (real sections come next) */
 .hero-placeholder {
+  position: relative;
+  z-index: 1;
   min-height: 100svh;
   display: grid;
   place-content: center;
