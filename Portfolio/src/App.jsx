@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import SplashScreen from './components/SplashScreen'
 import HomeBackground from './components/HomeBackground'
 import Navbar from './components/Navbar'
+import Hero from './components/Hero'
 import { setThemeColor, THEME } from './utils/themeColor'
 import './App.css'
 
@@ -24,10 +25,7 @@ function App() {
         <Navbar />
 
         {/* Main portfolio index page */}
-        <section id="home" className="hero-placeholder">
-          <h1>Vishal Kumar</h1>
-          <p>Full Stack Developer</p>
-        </section>
+        <Hero />
       </main>
     </>
   )

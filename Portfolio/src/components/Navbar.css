@@ -10,13 +10,16 @@
   pointer-events: none; /* only the bar is interactive */
 }
 
-/* ===== Glass bar ===== */
+/* ===== Bar ===== */
 .nav__bar {
   pointer-events: auto;
+  width: 100%;
+  max-width: 1180px;
   display: flex;
   align-items: center;
-  gap: clamp(4px, 1.5vw, 14px);
-  padding: 7px 8px 7px 20px;
+  justify-content: space-between;
+  gap: clamp(6px, 2vw, 24px);
+  padding: 7px 8px;
   background: transparent;
   animation: navDrop 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -89,17 +92,26 @@
 
 /* ===== Responsive ===== */
 @media (max-width: 640px) {
-  .nav__bar {
-    padding: 6px 6px 6px 14px;
-    gap: 2px;
+  .nav {
+    padding: 12px 10px;
   }
   .nav__brand {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
   .nav__item {
-    padding: 7px 10px;
-    font-size: 0.74rem;
+    padding: 7px 9px;
+    font-size: 0.78rem;
     letter-spacing: 0;
+  }
+}
+
+@media (max-width: 440px) {
+  .nav__links {
+    gap: 0;
+  }
+  .nav__item {
+    padding: 6px 6px;
+    font-size: 0.7rem;
   }
 }
 

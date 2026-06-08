@@ -22,24 +22,3 @@
   }
 }
 
-/* temporary hero placeholder (real sections come next) */
-.hero-placeholder {
-  position: relative;
-  z-index: 1;
-  min-height: 100svh;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  gap: 8px;
-}
-
-.hero-placeholder h1 {
-  font-size: clamp(3rem, 9vw, 7rem);
-}
-
-.hero-placeholder p {
-  color: var(--color-accent);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-size: 1rem;
-}

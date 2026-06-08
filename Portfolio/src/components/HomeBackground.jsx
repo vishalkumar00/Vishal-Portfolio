@@ -72,7 +72,14 @@ export default function HomeBackground() {
       buildGrid()
     }
     resize()
+    // re-measure after orientation settles (mobile fires resize too early)
+    let pending = []
+    const settle = () => {
+      pending.forEach(clearTimeout)
+      pending = [setTimeout(resize, 150), setTimeout(resize, 400)]
+    }
     window.addEventListener('resize', resize)
+    window.addEventListener('orientationchange', settle)
 
     const onMove = (e) => { mouse.tx = e.clientX; mouse.ty = e.clientY }
     const onLeave = () => { mouse.tx = -9999; mouse.ty = -9999 }
@@ -147,7 +154,9 @@ export default function HomeBackground() {
 
     return () => {
       cancelAnimationFrame(raf)
+      pending.forEach(clearTimeout)
       window.removeEventListener('resize', resize)
+      window.removeEventListener('orientationchange', settle)
       window.removeEventListener('pointermove', onMove)
       window.removeEventListener('pointerleave', onLeave)
     }

@@ -61,7 +61,14 @@ function SplashScreen({ onFinish }) {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
     resize()
+    // re-measure after orientation settles (mobile fires resize too early)
+    let pending = []
+    const settle = () => {
+      pending.forEach(clearTimeout)
+      pending = [setTimeout(resize, 150), setTimeout(resize, 400)]
+    }
     window.addEventListener('resize', resize)
+    window.addEventListener('orientationchange', settle)
 
     /* ---- Layer 1: wave-surface grid ---- */
     const grid = []
@@ -363,7 +370,9 @@ function SplashScreen({ onFinish }) {
 
     return () => {
       cancelAnimationFrame(raf)
+      pending.forEach(clearTimeout)
       window.removeEventListener('resize', resize)
+      window.removeEventListener('orientationchange', settle)
     }
   }, [])
 
