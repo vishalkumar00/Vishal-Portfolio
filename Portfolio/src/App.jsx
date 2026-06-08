@@ -3,6 +3,7 @@ import SplashScreen from './components/SplashScreen'
 import HomeBackground from './components/HomeBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Skills from './components/Skills'
 import { setThemeColor, THEME } from './utils/themeColor'
 import './App.css'
 
@@ -26,6 +27,7 @@ function App() {
 
         {/* Main portfolio index page */}
         <Hero />
+        <Skills />
       </main>
     </>
   )
