@@ -1,0 +1,179 @@
+.projects {
+  position: relative;
+  z-index: 1;
+  /* scroll track — the stage pins while you move down the tower */
+  height: 360vh;
+  background: #000;
+}
+
+/* ===== Pinned stage ===== */
+.projects__stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  perspective: 1300px;
+  perspective-origin: 50% 45%;
+}
+
+.projects__eyebrow {
+  position: absolute;
+  top: 92px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 0;
+  z-index: 3;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* ===== Twisting slab tower ===== */
+.projects__tower-wrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+
+.projects__tower {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.slab {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 360px; /* long thin plate */
+  height: 6px;
+  margin: -3px 0 0 -180px;
+  border-radius: 4px;
+  /* white plate with a soft sheen so the twist reads as 3D */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.92) 50%,
+    rgba(255, 255, 255, 0.06)
+  );
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  backface-visibility: hidden;
+}
+
+/* short perpendicular bar = the plate's depth, so it never vanishes edge-on */
+.slab--depth {
+  width: 80px;
+  margin-left: -40px;
+}
+
+/* ===== Project cards ===== */
+.projects__items {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pcard {
+  position: absolute;
+  top: 50%;
+  width: min(40%, 440px);
+  padding: 26px 28px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 12, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translate(0, -50%);
+  will-change: transform, opacity;
+  pointer-events: auto;
+}
+.pcard--left {
+  left: 5%;
+}
+.pcard--right {
+  right: 5%;
+}
+
+.pcard__n {
+  font-family: 'Abril Fatface', Georgia, serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.85;
+}
+
+.pcard__title {
+  font-family: 'Abril Fatface', Georgia, serif;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  line-height: 1.1;
+  margin: 8px 0 4px;
+  color: var(--color-highlight);
+}
+
+.pcard__sub {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  opacity: 0.8;
+}
+
+.pcard__desc {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.pcard__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pcard__stack li {
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 149, 89, 0.3);
+  font-size: 0.82rem;
+  letter-spacing: 0.3px;
+  color: var(--color-highlight);
+}
+
+/* ===== Compact (mobile): static stacked cards, no 3D tower ===== */
+.projects--compact {
+  height: auto;
+}
+.projects--compact .projects__stage {
+  position: static;
+  height: auto;
+  overflow: visible;
+  padding: 110px 18px 80px;
+  perspective: none;
+}
+.projects--compact .projects__tower-wrap {
+  display: none;
+}
+.projects--compact .projects__items {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 560px;
+  margin: 30px auto 0;
+}
+.projects--compact .pcard {
+  position: static;
+  width: auto;
+  opacity: 1;
+  transform: none;
+}
