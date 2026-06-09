@@ -66,7 +66,7 @@ export default function Contact() {
 
       <footer className="contact__footer">
         <span>© {new Date().getFullYear()} Vishal Kumar</span>
-        <span className="contact__footer-note">Built with React &amp; Vite</span>
+      
       </footer>
     </section>
   )
