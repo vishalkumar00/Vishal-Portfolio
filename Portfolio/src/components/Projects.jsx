@@ -30,7 +30,7 @@ const PROJECTS = [
 
 const SLABS = 72
 const SLAB_GAP = 13 // px between plates (bigger = airier, taller)
-const SLAB_STEP = 8 // deg of twist added per plate
+const SLAB_STEP = 70 // deg of twist added per plate
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v))
 const lerp = (a, b, t) => a + (b - a) * t
@@ -59,7 +59,7 @@ export default function Projects() {
 
     let raf
     const frame = (now) => {
-      const t = now / 1000
+      const t = now / 1000b
       const rect = section.getBoundingClientRect()
       const vh = window.innerHeight
       const track = Math.max(1, section.offsetHeight - vh)

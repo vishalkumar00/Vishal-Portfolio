@@ -55,12 +55,15 @@
   border-radius: 4px;
   /* white plate with a soft sheen so the twist reads as 3D */
   background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.06),
-    rgba(255, 255, 255, 0.92) 50%,
-    rgba(255, 255, 255, 0.06)
-  );
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  90deg,
+  rgba(0, 0, 0, 0.1),
+  rgba(90, 55, 30, 0.65) 42%,
+  rgba(245, 190, 120, 0.9) 50%,
+  rgba(40, 25, 15, 0.8) 58%,
+  rgba(0, 0, 0, 0.1)
+);
+
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.92) 50%;
   backface-visibility: hidden;
 }
 
@@ -177,3 +180,29 @@
   opacity: 1;
   transform: none;
 }
+.slab {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 360px;
+  height: 6px;
+  margin: -3px 0 0 -180px;
+  border-radius: 4px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(85, 85, 85, 0.85) 45%,
+    rgba(18, 18, 18, 1) 52%,
+    rgba(150, 150, 150, 0.65) 60%,
+    rgba(255, 255, 255, 0.03)
+  );
+
+  box-shadow:
+    0 0 14px rgba(255, 255, 255, 0.05),
+    0 0 28px rgba(242, 149, 89, 0.06);
+
+  opacity: 0.82;
+  backface-visibility: hidden;
+}
+
