@@ -59,7 +59,7 @@ export default function Projects() {
 
     let raf
     const frame = (now) => {
-      const t = now / 1000b
+      const t = now / 1000
       const rect = section.getBoundingClientRect()
       const vh = window.innerHeight
       const track = Math.max(1, section.offsetHeight - vh)

@@ -71,11 +71,11 @@
 
 .cmethod {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  min-width: 200px;
-  padding: 16px 22px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 180px;
+  padding: 16px 26px;
   border-radius: 14px;
   border: 1px solid rgba(184, 176, 141, 0.18);
   background: rgba(40, 56, 69, 0.3);
@@ -95,9 +95,18 @@
   text-transform: uppercase;
   color: var(--color-accent);
 }
-.cmethod__value {
-  font-size: 1rem;
-  color: var(--color-highlight);
+.cmethod__arrow {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--color-highlight);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.25s ease;
+}
+.cmethod:hover .cmethod__arrow {
+  transform: translate(2px, -2px);
 }
 
 /* ===== Reveal ===== */

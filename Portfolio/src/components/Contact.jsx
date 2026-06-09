@@ -4,17 +4,10 @@ import './Contact.css'
 const METHODS = [
   {
     label: 'Email',
-    value: 'vishalkumar.0000666@gmail.com',
     href: 'mailto:vishalkumar.0000666@gmail.com',
   },
   {
-    label: 'Phone',
-    value: '382-885-1786',
-    href: 'tel:3828851786',
-  },
-  {
     label: 'LinkedIn',
-    value: 'in/vishal-kumar666',
     href: 'https://linkedin.com/in/vishal-kumar666',
   },
 ]
@@ -62,7 +55,10 @@ export default function Contact() {
               rel={m.href.startsWith('http') ? 'noreferrer' : undefined}
             >
               <span className="cmethod__label">{m.label}</span>
-              <span className="cmethod__value">{m.value}</span>
+              <svg className="cmethod__arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7" />
+                <path d="M9 7h8v8" />
+              </svg>
             </a>
           ))}
         </div>
