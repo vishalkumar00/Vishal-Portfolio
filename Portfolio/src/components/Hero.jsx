@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { scrollToSection } from '../utils/scrollToSection'
 import './Hero.css'
 
 const ROLES = [
@@ -35,8 +36,20 @@ export default function Hero() {
         </p>
 
         <div className="hero__cta">
-          <a className="btn btn--primary" href="#projects">View Projects</a>
-          <a className="btn btn--ghost" href="#contact">Get in Touch</a>
+          <a
+            className="btn btn--primary"
+            href="#projects"
+            onClick={(e) => { e.preventDefault(); scrollToSection('#projects') }}
+          >
+            View Projects
+          </a>
+          <a
+            className="btn btn--ghost"
+            href="#contact"
+            onClick={(e) => { e.preventDefault(); scrollToSection('#contact') }}
+          >
+            Get in Touch
+          </a>
         </div>
 
         <div className="hero__socials">
@@ -48,7 +61,12 @@ export default function Hero() {
         </div>
       </div>
 
-      <a className="hero__scroll" href="#about" aria-label="Scroll to About">
+      <a
+        className="hero__scroll"
+        href="#about"
+        aria-label="Scroll to About"
+        onClick={(e) => { e.preventDefault(); scrollToSection('#about') }}
+      >
         <span>scroll</span>
         <span className="hero__chevron" aria-hidden="true">⌄</span>
       </a>

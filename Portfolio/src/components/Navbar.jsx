@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useLayoutEffect } from 'react'
+import { scrollToSection } from '../utils/scrollToSection'
 import './Navbar.css'
 
 /* Small inline stroke icons — inherit currentColor so they follow link states */
@@ -109,7 +110,18 @@ export default function Navbar() {
   return (
     <header className="nav">
       <div className="nav__bar">
-        <a className="nav__brand" href="#home" aria-label="Home">VK</a>
+        <a
+          className="nav__brand"
+          href="#home"
+          aria-label="Home"
+          onClick={(e) => {
+            e.preventDefault()
+            scrollToSection('#home')
+            setActive('#home')
+          }}
+        >
+          VK
+        </a>
 
         <nav className="nav__links" aria-label="Primary" ref={linksRef}>
           {/* one continuous line; a raised tab slides to the active item */}
@@ -174,7 +186,11 @@ export default function Navbar() {
                 className={`nav__item${isActive ? ' is-active' : ''}`}
                 aria-label={l.label}
                 aria-current={isActive ? 'page' : undefined}
-                onClick={() => setActive(l.href)}
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection(l.href)
+                  setActive(l.href)
+                }}
               >
                 <span className="nav__icon">{Icon[l.icon]}</span>
                 <span className="nav__label">{l.label}</span>
